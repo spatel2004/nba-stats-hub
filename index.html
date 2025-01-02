@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA Stats HUB </title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body onload="loadStarPlayers()">
+    <nav>
+        <div class="leftHeader">
+            <img class="nbaIcon" height="60px" width="60px" src="./images/nba-logo.jpg">
+            <h1 class="NBAStatsTitle"> NBA Stats Hub </h1>
+        </div>
+        <div class="headerSearch">
+            <input type="text" placeholder="Search Here..." id="headerSearchBar">
+            <button id="headerSearchBtn" onclick="saveInput()"> Search </button>
+        </div>
+    </nav>
+
+    <div class="searchBarContainer">
+        <input type="text" class="teamSelection" placeholder="Team Abbrievation (E.g BOS, TOR, PHI)">
+        <button type="submit" class="showTeamBtn" onclick="loadTeamPlayers()"> Show </button>
+    </div>
+
+    <div class="mostPopularPlayersContainer">
+        <h2 class="mostPopularPlayersTitle"> Most Popular Player Searches </h2>
+    </div>
+
+    <div class="starPlayersContainer">
+        <div class="playerContainer player1">
+            <h2 class="giannis teamPlayer1"> </h2>
+            <div class="statsContainer"> 
+                <img class="player1Image" src="./images/lebronjames.png">
+                <div class="stats">
+                    <p class="player1 points"> Points Per Game (PPG): 28.3 </p>
+                    <p class="player1 rebounds"> Filler </p>
+                    <p class="player1 steals"> Filler </p>
+                    <p class="filler"> Filler </p>
+                    <p class="filler"> Filler </p>
+                    <p class="filler"> Filler </p>
+                    <p class="filler"> Filler </p>
+                </div>
+            </div>  
+        </div>
+        <div class="playerContainer player2">
+            <h2 class="lebron teamPlayer2"> </h2>
+            <div class="statsContainer">
+                <img class="player2Image" src="https://cdn.nba.com/headshots/nba/latest/1040x760/1630567.png">
+                <div class="stats">
+                    <p class="player2points"> Filler </p>
+                    <p class="player2rebounds"> Filler </p>
+                    <p class="player2steals"> Filler </p>
+                    <p class="filler"> Filler </p>
+                    <p class="filler"> Filler </p>
+                    <p class="filler"> Filler </p>
+                    <p class="filler"> Filler </p>
+                </div>
+            </div>
+        </div>
+        <div class="playerContainer player3">
+            <h2 class="curry teamPlayer3"> </h2>
+            <div class="statsContainer">
+                <img class="player3Image" src="./images/lebronjames.png">
+                <div class="stats">
+                    <p class="player3points"> Filler </p>
+                    <p class="player3rebounds"> Filler </p>
+                    <p class="player3steals"> Filler </p>
+                    <p class="filler"> Filler </p>
+                    <p class="filler"> Filler </p>
+                    <p class="filler"> Filler </p>
+                    <p class="filler"> Filler </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="search.js"> </script>
+</body>
+</html>

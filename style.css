@@ -1,0 +1,200 @@
+body {
+    margin: 0;
+    background-color: black; /* Dark background */
+    font-family: 'Outfit', sans-serif;
+    color: black; /* Light text color */
+}
+
+nav {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom: 1px solid white; 
+    padding:0 5%;
+}
+
+.leftHeader {
+    display:flex;
+    align-items: center;
+    gap:20px;
+}
+
+.nbaIcon {
+    border-radius: 50%;
+    border:2px solid #f2b700;
+}
+
+.NBAStatsTitle {
+    color: white;
+    font-size: 40px;
+}
+
+#headerSearchBar {
+    width: 200px;
+    height: 30px;
+    border-radius: 25px;
+    padding-left: 20px;
+    outline: none;
+    border: 2px solid #444444; /* Subtle border for contrast */
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+    font-size: 18px;
+    background-color: whitesmoke; /* Dark search bar */
+    color: black;
+    transition: all 0.3s ease;
+}
+
+#headerSearchBar:focus {
+    border-color: #f2b700; /* Highlight border on focus */
+    box-shadow: 0 4px 8px rgba(242, 183, 0, 0.5);
+}
+
+#headerSearchBar::placeholder {
+    color: black; /* Light placeholder color */
+    font-style: italic;
+}
+
+#headerSearchBtn {
+    width:100px;
+    height:35px;
+    border-radius:10px;
+    background-color:#2561f8;
+    color:whitesmoke;
+    font-size:20px;
+}
+
+.searchBarContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:5%;
+    gap:20px;
+}
+
+.teamSelection {
+    width:375px;
+    height:30px;
+    border-radius: 25px;
+    padding-left: 20px;
+    outline: none;
+    border: 2px solid blue; /* Subtle border for contrast */
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+    font-size: 18px;
+    background-color: whitesmoke; /* Dark search bar */
+    color: black;
+    transition: all 0.3s ease;
+}
+
+.teamSelection::placeholder {
+    font-size:18px;
+    color:black;
+    font-style:italic;
+}
+
+.showTeamBtn {
+    width:100px;
+    height:35px;
+    border-radius:10px;
+    background-color:#2561f8;
+    color:whitesmoke;
+    font-size:20px;
+}
+
+.mostPopularPlayersContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 3%;
+}
+
+.mostPopularPlayersTitle {
+    font-size: 35px;
+    color: white;
+}
+
+.starPlayersContainer {
+    padding: 2% 20px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.playerContainer { 
+    border-radius: 15px;
+    height: fit-content;
+    width: 400px;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden; 
+}
+
+.playerContainer:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.9);
+}
+
+.playerContainer h2 {
+    color: white; 
+    font-size: 35px;
+}
+
+.statsContainer img {
+    border:none;
+    height: 370px;
+    width:400px;
+    /* margin: 10px 0; */
+    object-fit:contain;
+}
+
+.stats {
+    font-size: 20px;
+    line-height: 1.5;
+    color: white;
+    padding: 10px 20px;
+}
+
+@media (max-width: 768px) {
+
+    .playerContainer {
+        width:420px;
+        height:1000px;
+        border:4px solid black;
+    }
+
+    .playerContainer h2 {
+        padding-top:5%;
+    }
+    .statsContainer img {
+        border:2px solid black;
+        object-fit:cover;
+        height:300px;
+        width:275px;
+    }
+
+    .searchBarContainer {
+        margin-top:25%;
+        flex-direction:column;
+    }
+
+    #searchBar {
+        width:200px;
+        font-size:12px;
+    }
+
+    .currentLeadersTitle {
+        font-size: 27px;
+        flex-wrap:wrap;
+        text-align:center;
+    }
+
+    .currentSeasonLeadersContainer {
+        margin-top: 15%;
+    }
+
+    #searchBtn {
+        width:100px;
+        height:45px;
+    }
+
+}
+  

@@ -1,0 +1,25 @@
+body {
+    margin:0;
+    display:flex;
+    justify-content:space-evenly;
+    gap:20%;
+    background-color:white;
+}
+
+.playerInformationContainer {
+    border:4px solid yellow;
+}
+
+.pictureContainer {
+    display:flex;
+    justify-content:center;
+    align-items: start;
+    width:550px;
+    height: 650px;
+    border:5px solid black;
+    object-fit:contain;
+}
+
+.nbaPlayerImage {
+    margin-top:5%;
+}
