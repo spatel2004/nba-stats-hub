@@ -1,4 +1,4 @@
-async function getStats() {
+async function getPlayer() {
     try {
         const userInput = localStorage.getItem('userInput');
         console.log(userInput);
@@ -12,12 +12,7 @@ async function getStats() {
         const playerName = document.querySelector(".playerName");
         playerName.textContent = data[0].playerName;
 
-        const playerId = data[0].playerId;
-        console.log(playerId);
-
-        const playerPicture = document.querySelector(".nbaPlayerImage");
-        playerPicture.src = `https://www.basketball-reference.com/req/202106291/images/headshots/${playerId}.jpg`;
-
+        fetchPlayerImage(data[0].playerName, data[0].team);
     }
 
     catch (error) {
@@ -26,26 +21,45 @@ async function getStats() {
 
 }
 
-async function fetchPlayerImage() {
-    const teamAbbr = "hou"; // Replace with the team's abbreviation
-    const apiUrl = `https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/${teamAbbr}/roster`;
+async function fetchPlayerImage(playerName, teamName) {
+    try {
+        const response1 = await fetch(`https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/${teamName.toLowerCase()}/roster`)
+        if (!response1.ok) {
+            throw new Error("Could not find this NBA player based on his name");
+        }
+        const data1 = await response1.json();
 
-    const response = await fetch(apiUrl);
-    console.log(response);
+        const players = data1.athletes;
+        console.log(players);
 
-    const data = await response.json();
-    console.log(data);
+        let requiredPlayer = null;
 
-    const pName = "Jalen Green";
-    const player = data.athletes.find(eachPlayer => eachPlayer.fullName === pName);
-    console.log(player);
+        for (let i = 0; i < players.length; i ++) {
+            let currentPlayer = players[i];
+            if (currentPlayer.fullName === playerName) {
+                requiredPlayer = currentPlayer;
+                break;
+            }
+        }
+        console.log(requiredPlayer);
 
-    if (player) {
-        const headShotUrl = player.headshot.href;
-        document.querySelector(".nbaPlayerImage").src = `${headShotUrl}`;
+        document.querySelector(".playerPicture").src = requiredPlayer.headshot.href;
+        document.querySelector(".playerPicture").style.backgroundColor = hexToRgb(`${data1.team.color}`);
     }
-
-//     })
-//   .catch(error => console.error("Error fetching data:", error));
+    catch(error) {
+        console.error(error);
+    }
 }
-fetchPlayerImage();
+
+function hexToRgb(hex) {
+    // Remove the leading '#' if present
+    hex = hex.replace(/^#/, '');
+  
+    // Parse the hex string into integer values for red, green, and blue
+    let r = parseInt(hex.substring(0, 2), 16);
+    let g = parseInt(hex.substring(2, 4), 16);
+    let b = parseInt(hex.substring(4, 6), 16);
+  
+    return `rgb(${r}, ${g}, ${b})`;
+}
+getPlayer();

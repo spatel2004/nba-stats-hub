@@ -6,7 +6,7 @@ function saveInput() {
 
 async function loadTeamPlayers() {
   try {
-    const userTeam = document.querySelector(".teamSelection").value.toLowerCase().slice(0,3);
+    const userTeam = document.querySelector(".teamSelection").value;
     console.log(userTeam);
 
     if (!userTeam) {
@@ -24,16 +24,21 @@ async function loadTeamPlayers() {
 
       const players = data.athletes; // all players
 
+
       let highestPlayer = null;
       let secondHighestPlayer = null;
       let thirdHighestPlayer = null;
 
       for (let i = 0; i < players.length; i++) {
-        const salary = players[i].contract.salary;
+        if (!players[i].contract || players[i].contract.salary === undefined || players[i].contract.incomingTradeValue === undefined) {
+          continue;
+        }
+
+        const playerSalary = players[i].contract.salary;
         const tradeValue = players[i].contract.incomingTradeValue;
   
         // Calculate the effective sum
-        let sum = (tradeValue === salary) ? salary : salary + tradeValue;
+        let sum = (tradeValue === playerSalary) ? playerSalary : playerSalary + tradeValue;
 
         // Update the top 3 players based on the sum
         if (!highestPlayer || sum > (highestPlayer.contract.salary + (highestPlayer.contract.incomingTradeValue === highestPlayer.contract.salary ? 0 : highestPlayer.contract.incomingTradeValue))) {
@@ -43,14 +48,14 @@ async function loadTeamPlayers() {
 
           // Update highest
           highestPlayer = players[i];
-        } 
+         } 
         else if (!secondHighestPlayer || sum > (secondHighestPlayer.contract.salary + (secondHighestPlayer.contract.incomingTradeValue === secondHighestPlayer.contract.salary ? 0 : secondHighestPlayer.contract.incomingTradeValue))) {
           // Shift down
           thirdHighestPlayer = secondHighestPlayer;
 
           // Update second highest
           secondHighestPlayer = players[i];
-        } 
+       } 
         else if (!thirdHighestPlayer || sum > (thirdHighestPlayer.contract.salary + (thirdHighestPlayer.contract.incomingTradeValue === thirdHighestPlayer.contract.salary ? 0 : thirdHighestPlayer.contract.incomingTradeValue))) {
           // Update third highest
           thirdHighestPlayer = players[i];
@@ -75,9 +80,34 @@ async function loadTeamPlayers() {
       for (let i = 0; i < playerContainerList.length; i ++) {
         playerContainerList[i].style.backgroundColor = hexToRgb(`${teamColor}`);
       }
-      updateCard1Information(highestPlayer);
-      updateCard2Information(secondHighestPlayer);
-      updateCard3Information(thirdHighestPlayer);
+
+      try {
+        if (highestPlayer.fullName === "Luka Doncic") {
+          highestPlayer.fullName = "Luka Dončić";
+        }
+
+        if (highestPlayer.fullName === "Nikola Jokic") {
+          highestPlayer.fullName = "Nikola Jokić";
+        }
+
+        const highestPlayerStatsFetch = await fetch(`http://b8c40s8.143.198.70.30.sslip.io/api/PlayerDataTotals/query?playerName=${highestPlayer.fullName}&season=2025&ascending=true&pageNumber=1&pageSize=1`);
+        const highestPlayerData = await highestPlayerStatsFetch.json();
+        console.log(highestPlayerData);
+
+        const secondHighestPlayerStatsFetch = await fetch(`http://b8c40s8.143.198.70.30.sslip.io/api/PlayerDataTotals/query?playerName=${secondHighestPlayer.fullName}&season=2025&ascending=true&pageNumber=1&pageSize=1`);
+        const secondHighestPlayerData = await secondHighestPlayerStatsFetch.json();
+
+        const thirdHighestPlayerStatsFetch = await fetch(`http://b8c40s8.143.198.70.30.sslip.io/api/PlayerDataTotals/query?playerName=${thirdHighestPlayer.fullName}&season=2025&ascending=true&pageNumber=1&pageSize=1`);
+        const thirdHighestPlayerData = await thirdHighestPlayerStatsFetch.json();
+
+        updateCard1Information(highestPlayerData);
+        updateCard2Information(secondHighestPlayerData);
+        updateCard3Information(thirdHighestPlayerData);
+      }
+
+      catch(error) {
+        console.error(error);
+      }
 
     }
   }
@@ -89,15 +119,18 @@ async function loadTeamPlayers() {
 }
 
 function updateCard1Information(data) {
-  document.querySelector(".teamPlayer1").textContent = data.fullName;
+  document.querySelector(".teamPlayer1").textContent = data[0].playerName;
+  document.querySelector(".p1points").textContent = data[0].points;
 }
 
 function updateCard2Information(data) {
-  document.querySelector(".teamPlayer2").textContent = data.fullName;
+  document.querySelector(".teamPlayer2").textContent = data[0].playerName;
+  document.querySelector(".p2points").textContent = data[0].points;
 }
 
 function updateCard3Information(data) {
-  document.querySelector(".teamPlayer3").textContent = data.fullName;
+  document.querySelector(".teamPlayer3").textContent = data[0].playerName;
+  document.querySelector(".p3points").textContent = data[0].points;
 }
 
 function hexToRgb(hex) {
@@ -178,3 +211,25 @@ async function loadStarPlayers() {
 
 
 }
+
+function movePlayersDown() {
+  document.querySelector(".mostPopularPlayersContainer").style.marginTop = "45%";
+}
+
+document.querySelector(".teamSelection").onclick = movePlayersDown;
+
+document.querySelector(".teamSelection").addEventListener("change",function() {
+  const selectedValue = this.value;
+  if (selectedValue === "0") {
+    loadStarPlayers();
+  }
+  loadTeamPlayers();
+  if (selectedValue) {
+    document.querySelector(".mostPopularPlayersContainer").style.marginTop = "50%";
+  }
+});
+
+document.querySelector(".teamSelection").addEventListener("mouseout",function() {
+  document.querySelector(".mostPopularPlayersContainer").style.marginTop = "3%";
+});
+

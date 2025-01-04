@@ -20,12 +20,43 @@
     </nav>
 
     <div class="searchBarContainer">
-        <input type="text" class="teamSelection" placeholder="Team Abbrievation (E.g BOS, TOR, PHI)">
-        <button type="submit" class="showTeamBtn" onclick="loadTeamPlayers()"> Show </button>
+        <select class="teamSelection">
+            <option value="0">Select team:</option>
+            <option value="bos"> Boston Celtics </option>
+            <option value="bkn"> Brooklyn Nets </option>
+            <option value="ny"> New York Knicks </option>
+            <option value="phi"> Philadelphia 76ers </option>
+            <option value="tor"> Toronto Raptors </option>
+            <option value="gsw"> Golden State Warriors </option>
+            <option value="lac"> LA Clippers </option>
+            <option value="lal"> Los Angeles Lakers </option>
+            <option value="pho"> Phoneix Suns </option>
+            <option value="sac"> Sacramento Kings </option>
+            <option value="chi"> Chicago Bulls </option>
+            <option value="cle"> Cleveland Cavaliers </option>
+            <option value="det"> Detroit Pistons </option>
+            <option value="ind"> Indiana Pacers </option>
+            <option value="mil"> Milwaukee Bucks </option>
+            <option value="atl"> Atlanta Hawks </option>
+            <option value="cha"> Charlotte Hornets </option>
+            <option value="mia"> Miami Heat </option>
+            <option value="orl"> Orlando Magic </option>
+            <option value="wsh"> Washington Wizards </option>
+            <option value="den"> Denver Nuggets </option>
+            <option value="min"> Minnesota Timberwolves </option>
+            <option value="okc"> Oklahoma City Thunder </option>
+            <option value="por"> Portland Trailblazers </option>
+            <option value="uth"> Utah Jazz </option>
+            <option value="dal"> Dallas Mavericks </option>
+            <option value="hou"> Houston Rockets </option>
+            <option value="mem"> Memphis Grizzlies </option>
+            <option value="no"> New Orleans Pelicans </option>
+            <option value="sa"> San Antonio Spurs </option>
+        </select>
     </div>
 
     <div class="mostPopularPlayersContainer">
-        <h2 class="mostPopularPlayersTitle"> Most Popular Player Searches </h2>
+        <h2 class="mostPopularPlayersTitle" id="jumpHere"> Most Popular Player Searches </h2>
     </div>
 
     <div class="starPlayersContainer">
@@ -34,9 +65,9 @@
             <div class="statsContainer"> 
                 <img class="player1Image" src="./images/lebronjames.png">
                 <div class="stats">
-                    <p class="player1 points"> Points Per Game (PPG): 28.3 </p>
-                    <p class="player1 rebounds"> Filler </p>
-                    <p class="player1 steals"> Filler </p>
+                    <p class="p1points"> Season Points </p>
+                    <p class="p1rebounds"> Filler </p>
+                    <p class="p1steals"> Filler </p>
                     <p class="filler"> Filler </p>
                     <p class="filler"> Filler </p>
                     <p class="filler"> Filler </p>
@@ -49,9 +80,9 @@
             <div class="statsContainer">
                 <img class="player2Image" src="https://cdn.nba.com/headshots/nba/latest/1040x760/1630567.png">
                 <div class="stats">
-                    <p class="player2points"> Filler </p>
-                    <p class="player2rebounds"> Filler </p>
-                    <p class="player2steals"> Filler </p>
+                    <p class="p2points"> Season Points </p>
+                    <p class="p2rebounds"> Filler </p>
+                    <p class="p2steals"> Filler </p>
                     <p class="filler"> Filler </p>
                     <p class="filler"> Filler </p>
                     <p class="filler"> Filler </p>
@@ -64,9 +95,9 @@
             <div class="statsContainer">
                 <img class="player3Image" src="./images/lebronjames.png">
                 <div class="stats">
-                    <p class="player3points"> Filler </p>
-                    <p class="player3rebounds"> Filler </p>
-                    <p class="player3steals"> Filler </p>
+                    <p class="p3points"> Season Points </p>
+                    <p class="p3rebounds"> Filler </p>
+                    <p class="p3steals"> Filler </p>
                     <p class="filler"> Filler </p>
                     <p class="filler"> Filler </p>
                     <p class="filler"> Filler </p>
