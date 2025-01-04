@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "@balldontlie/sdk": "^1.2.2",
-    "nba": "^4.15.0"
-  },
-  "type": "module"
-}
