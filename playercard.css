@@ -1,87 +1,54 @@
 body {
     margin:0;
-    background-color:rgb(17,26,35);
+    background-color:rgb(26,31,44);
 }
 
 .playerContainer {
     display:flex;
     align-items:center;
-    gap:100px;
-    min-width:0px;
-    height: 650px;
-    border:5px solid red;
-}
-
-.playerPictureContainer {
-    padding-left:40px;
+    margin:2% auto;
+    width:90vw;
+    height: 50vh;
+    background-color:rgb(37, 43, 62);
+    gap:80px;
+    border-radius:20px;
 }
 
 .playerPicture {
-    height:350px;
-    width:350px;
+    height:300px;
+    width:300px;
     object-fit:contain;
     border-radius:50%;
     padding-bottom:25px;
+    margin-left:15%;
 }
 
 .playerName {
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    margin-top:2.5%;
-    color:whitesmoke;
-    font-size:40px;
-    text-align:center;
+    color:white;
+    font-size:55px;
+    margin:0;
 }
 
-.numberStatsContainer {
+.teamAndNumberContainer {
     color:white;
     display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:20px;
-}
-
-.stat {
-    text-align:center;
-    padding-bottom:50px;
-    width:175px;
-    height:100px;
-    border-radius:10px;
-    border:3px solid rgb(217,17,68);
-}
-
-.stat1 {
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size:35px;
-}
-
-.title {
-    font-size:20px;
+    gap:10px;
+    font-size:24px;
+    text-align:left;
+    margin-left:1%;
 }
 
 .personalInformationContainer {
-    margin-top:4%;
-    color:white;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-.personalInformationTitle {
-    font-size:28px;
-}
-
-.row {
-    margin:0;
     display:flex;
-    align-items:center;
-    gap: 400px;
-    margin-left:15%;
-    padding-top:35px;
-    padding-bottom:35px;
-    border-top:1px solid rgb(50,74,93);
-    border-bottom:1px solid rgb(50,74,93);
-    width:1250px;
+    gap:20px;
+    color:white;
 }
 
-.row-title {
-    font-size:22px;
-    color:rgb(122,138,152);
+.info {
+    text-align:center;
+    border-radius:10px;
+    width:80px;
+    padding:10px;
+    background-color:rgb(29,39,56);
 }
+

@@ -286,7 +286,7 @@ document.addEventListener("visibilitychange", () => {
 })
 
 document.addEventListener("visibilitychange", () => {
-    document.getElementById("headerSearchBar").placeholder = "";
+    document.getElementById("headerSearchBar").placeholder = "Search Here...";
     document.getElementById("headerSearchBar").value = '';
 });
 

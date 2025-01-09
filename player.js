@@ -9,11 +9,8 @@ async function getPlayer() {
         const data = await response.json();
         console.log(data);
 
-        const playerName = document.querySelector(".playerName");
-        playerName.textContent = data[0].playerName;
-
         fetchPlayerImage(data[0].playerName, data[0].team);
-        fetchPlayerPrimaryStats(data);
+        fetchPlayerGameStats(data);
     }
 
     catch (error) {
@@ -43,9 +40,23 @@ async function fetchPlayerImage(playerName, teamName) {
                 break;
             }
         }
-        console.log(requiredPlayer);
 
         const teamColor = data1.team.color;
+
+        //updating player personal info here 
+
+        document.querySelector(".playerName").textContent = requiredPlayer.displayName;
+        document.querySelector(".playerTeam").textContent = teamName;
+        document.querySelector(".playerNumber").textContent = "#" + requiredPlayer.jersey;
+
+        const infoNodeList = document.querySelectorAll(".info");
+        for (let i = 0; i < infoNodeList.length; i ++) {
+            infoNodeList[i].style.backgroundColor = hexToRgb(`${teamColor}`);
+        }
+
+        document.querySelector(".playerPosition").textContent = requiredPlayer.position.parent.displayName;
+        document.querySelector(".playerHeight").textContent = requiredPlayer.displayHeight;
+        document.querySelector(".playerWeight").textContent = requiredPlayer.displayWeight;
 
         document.querySelector(".playerPicture").src = requiredPlayer.headshot.href;
         document.querySelector(".playerPicture").style.backgroundColor = hexToRgb(`${teamColor}`);
@@ -59,7 +70,7 @@ async function fetchPlayerImage(playerName, teamName) {
     }
 }
 
-function fetchPlayerPrimaryStats(data) {
+function fetchPlayerGameStats(data) {
     const pointsPerGame = ((data[0].points) / (data[0].games)).toFixed(1);
     const reboundsPerGame = ((data[0].totalRb) / (data[0].games)).toFixed(1);
     const assistsPerGame = ((data[0].assists) / (data[0].games)).toFixed(1);
