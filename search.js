@@ -90,9 +90,12 @@ async function loadTeamPlayers() {
           highestPlayer.fullName = "Nikola Jokić";
         }
 
+        if (thirdHighestPlayer.fullName === "Nikola Vucevic") {
+          thirdHighestPlayer.fullName = "Nikola Vučević";
+        }
+
         const highestPlayerStatsFetch = await fetch(`http://b8c40s8.143.198.70.30.sslip.io/api/PlayerDataTotals/query?playerName=${highestPlayer.fullName}&season=2025&ascending=true&pageNumber=1&pageSize=1`);
         const highestPlayerData = await highestPlayerStatsFetch.json();
-        console.log(highestPlayerData);
 
         const secondHighestPlayerStatsFetch = await fetch(`http://b8c40s8.143.198.70.30.sslip.io/api/PlayerDataTotals/query?playerName=${secondHighestPlayer.fullName}&season=2025&ascending=true&pageNumber=1&pageSize=1`);
         const secondHighestPlayerData = await secondHighestPlayerStatsFetch.json();
@@ -120,17 +123,17 @@ async function loadTeamPlayers() {
 
 function updateCard1Information(data) {
   document.querySelector(".teamPlayer1").textContent = data[0].playerName;
-  document.querySelector(".p1points").textContent = data[0].points;
+  document.querySelector(".p1points").textContent = "Points Per Game: " + (data[0].points / data[0].games).toFixed(1);
 }
 
 function updateCard2Information(data) {
   document.querySelector(".teamPlayer2").textContent = data[0].playerName;
-  document.querySelector(".p2points").textContent = data[0].points;
+  document.querySelector(".p2points").textContent = "Points Per Game: " + (data[0].points / data[0].games).toFixed(1);
 }
 
 function updateCard3Information(data) {
   document.querySelector(".teamPlayer3").textContent = data[0].playerName;
-  document.querySelector(".p3points").textContent = data[0].points;
+  document.querySelector(".p3points").textContent = "Points Per Game: " + (data[0].points / data[0].games).toFixed(1);
 }
 
 function hexToRgb(hex) {
@@ -167,8 +170,6 @@ async function loadStarPlayers() {
     const bucksColor = data1.team.color;
     document.querySelector(".player1").style.backgroundColor = hexToRgb(bucksColor);
 
-
-
     const response2 = await fetch(`https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/${lakers}/roster`)
     const data2 = await response2.json();
 
@@ -201,6 +202,26 @@ async function loadStarPlayers() {
     const warriorsColor = data3.team.color;
     document.querySelector(".player3").style.backgroundColor = hexToRgb(warriorsColor);
 
+    try {
+      const giannisresponse = await fetch(`http://b8c40s8.143.198.70.30.sslip.io/api/PlayerDataTotals/query?playerName=${giannis.fullName}&season=2025&ascending=true&pageNumber=1&pageSize=1`);
+      const giannisData = await giannisresponse.json();
+
+      const lebronresponse = await fetch(`http://b8c40s8.143.198.70.30.sslip.io/api/PlayerDataTotals/query?playerName=${lebron.fullName}&season=2025&ascending=true&pageNumber=1&pageSize=1`);
+      const lebronData = await lebronresponse.json();
+
+      const curryresponse = await fetch(`http://b8c40s8.143.198.70.30.sslip.io/api/PlayerDataTotals/query?playerName=${curry.fullName}&season=2025&ascending=true&pageNumber=1&pageSize=1`);
+      const curryData = await curryresponse.json();
+
+      updateStarPlayer1Stats(giannisData);
+      updateStarPlayer2Stats(lebronData);
+      updateStarPlayer3Stats(curryData);
+    }
+
+    catch(error) {
+      console.error(error);
+    }
+
+
 
   }
 
@@ -209,6 +230,37 @@ async function loadStarPlayers() {
   }
   
 
+
+}
+
+function updateStarPlayer1Stats(data) {
+  document.querySelector(".p1points").textContent = "PPG: " + (data[0].points / data[0].games).toFixed(1);
+  document.querySelector(".p1rebounds").textContent = "RPG: " + (data[0].totalRb / data[0].games).toFixed(1);
+  document.querySelector(".p1steals").textContent = "SPG: " + (data[0].steals / data[0].games).toFixed(1);
+  document.querySelector(".p1assists").textContent = "APG: " + (data[0].assists / data[0].games).toFixed(1);
+  document.querySelector(".p1blocks").textContent = "BPG: " + (data[0].blocks / data[0].games).toFixed(1);
+  document.querySelector(".p1fouls").textContent = "Fouls Commited: " + (data[0].personalFouls);
+  document.querySelector(".p1FTmade").textContent = "Free Throws Made: " + (data[0].ft); 
+}
+
+function updateStarPlayer2Stats(data) {
+  document.querySelector(".p2points").textContent = "PPG: " + (data[0].points / data[0].games).toFixed(1);
+  document.querySelector(".p2rebounds").textContent = "RPG: " + (data[0].totalRb / data[0].games).toFixed(1);
+  document.querySelector(".p2steals").textContent = "SPG: " + (data[0].steals / data[0].games).toFixed(1);
+  document.querySelector(".p2assists").textContent = "APG: " + (data[0].assists / data[0].games).toFixed(1);
+  document.querySelector(".p2blocks").textContent = "BPG: " + (data[0].blocks / data[0].games).toFixed(1);
+  document.querySelector(".p2fouls").textContent = "Fouls Commited: " + (data[0].personalFouls);
+  document.querySelector(".p2FTmade").textContent = "Free Throws Made: " + (data[0].ft);
+}
+
+function updateStarPlayer3Stats(data) {
+  document.querySelector(".p3points").textContent = "PPG: " + (data[0].points / data[0].games).toFixed(1);
+  document.querySelector(".p3rebounds").textContent = "RPG: " + (data[0].totalRb / data[0].games).toFixed(1);
+  document.querySelector(".p3steals").textContent = "SPG: " + (data[0].steals / data[0].games).toFixed(1);
+  document.querySelector(".p3assists").textContent = "APG: " + (data[0].assists / data[0].games).toFixed(1);
+  document.querySelector(".p3blocks").textContent = "BPG: " + (data[0].blocks / data[0].games).toFixed(1);
+  document.querySelector(".p3fouls").textContent = "Fouls Commited: " + (data[0].personalFouls);
+  document.querySelector(".p3FTmade").textContent = "Free Throws Made: " + (data[0].ft);
 
 }
 
@@ -229,7 +281,18 @@ document.querySelector(".teamSelection").addEventListener("change",function() {
   }
 });
 
+document.addEventListener("visibilitychange", () => {
+  document.querySelector(".teamSelection").selectedIndex = 0;
+})
+
+document.addEventListener("visibilitychange", () => {
+    document.getElementById("headerSearchBar").placeholder = "";
+    document.getElementById("headerSearchBar").value = '';
+});
+
 document.querySelector(".teamSelection").addEventListener("mouseout",function() {
   document.querySelector(".mostPopularPlayersContainer").style.marginTop = "3%";
 });
+
+
 

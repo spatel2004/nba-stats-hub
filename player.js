@@ -13,6 +13,7 @@ async function getPlayer() {
         playerName.textContent = data[0].playerName;
 
         fetchPlayerImage(data[0].playerName, data[0].team);
+        fetchPlayerPrimaryStats(data);
     }
 
     catch (error) {
@@ -28,6 +29,7 @@ async function fetchPlayerImage(playerName, teamName) {
             throw new Error("Could not find this NBA player based on his name");
         }
         const data1 = await response1.json();
+        console.log(data1);
 
         const players = data1.athletes;
         console.log(players);
@@ -43,12 +45,37 @@ async function fetchPlayerImage(playerName, teamName) {
         }
         console.log(requiredPlayer);
 
+        const teamColor = data1.team.color;
+
         document.querySelector(".playerPicture").src = requiredPlayer.headshot.href;
-        document.querySelector(".playerPicture").style.backgroundColor = hexToRgb(`${data1.team.color}`);
+        document.querySelector(".playerPicture").style.backgroundColor = hexToRgb(`${teamColor}`);
+        const stats = document.querySelectorAll(".stat");
+        for (let i = 0; i < stats.length; i ++) {
+            stats[i].style.borderColor = hexToRgb(`${teamColor}`);
+        }
     }
     catch(error) {
         console.error(error);
     }
+}
+
+function fetchPlayerPrimaryStats(data) {
+    const pointsPerGame = ((data[0].points) / (data[0].games)).toFixed(1);
+    const reboundsPerGame = ((data[0].totalRb) / (data[0].games)).toFixed(1);
+    const assistsPerGame = ((data[0].assists) / (data[0].games)).toFixed(1);
+    const stealsPerGame = ((data[0].steals) / (data[0].games)).toFixed(1);
+    const blocksPerGame = ((data[0].blocks) / (data[0].games)).toFixed(1);
+
+    const statsArray = [pointsPerGame, reboundsPerGame, assistsPerGame, stealsPerGame, blocksPerGame];
+    const listStats = document.querySelectorAll(".stat1");
+
+    let i = 0;
+
+    for (const stat of listStats) {
+        stat.textContent = statsArray[i];
+        i += 1;
+    }
+    
 }
 
 function hexToRgb(hex) {
@@ -62,4 +89,13 @@ function hexToRgb(hex) {
   
     return `rgb(${r}, ${g}, ${b})`;
 }
+
+async function fetchNews() {
+    const response = await fetch("https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard");
+    console.log(response);
+
+    const data = await response.json();
+    console.log(data);
+}
 getPlayer();
+fetchNews();

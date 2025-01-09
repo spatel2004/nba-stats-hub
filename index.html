@@ -10,14 +10,26 @@
 <body onload="loadStarPlayers()">
     <nav>
         <div class="leftHeader">
-            <img class="nbaIcon" height="60px" width="60px" src="./images/nba-logo.jpg">
+            <img class="purplePulse" height="60px" width="60px" src="./images/purple-pulse.png">
             <h1 class="NBAStatsTitle"> NBA Stats Hub </h1>
         </div>
-        <div class="headerSearch">
-            <input type="text" placeholder="Search Here..." id="headerSearchBar">
-            <button id="headerSearchBtn" onclick="saveInput()"> Search </button>
-        </div>
     </nav>
+
+    <div class="mainTitleAndSearchContainer">
+        <p class="statsHubTitle"> Your Ultimate NBA Statistics Hub </p>
+        <p class="description-1"> Dive into comprenhesive NBA statistics, player analytics, and real time </p>
+        <p class="description-2"> game data all in one place </p>
+        <div class="headerSearch">
+            <input type="search" placeholder="Search Here..." id="headerSearchBar">
+            <button type="submit" id="headerSearchBtn" onclick="saveInput()"> Search </button>
+        </div>
+        <div class="exploreBtnsContainer">
+            <a href="#jumpHere">
+                <button class="explorePopPlayersBtn"> Explore Popular Players </button>
+            </a>
+            <button class="liveScoreBtn"> View Live Score Here </button>
+        </div>
+    </div>
 
     <div class="searchBarContainer">
         <select class="teamSelection">
@@ -65,13 +77,13 @@
             <div class="statsContainer"> 
                 <img class="player1Image" src="./images/lebronjames.png">
                 <div class="stats">
-                    <p class="p1points"> Season Points </p>
-                    <p class="p1rebounds"> Filler </p>
-                    <p class="p1steals"> Filler </p>
-                    <p class="filler"> Filler </p>
-                    <p class="filler"> Filler </p>
-                    <p class="filler"> Filler </p>
-                    <p class="filler"> Filler </p>
+                    <p class="p1points"> </p>
+                    <p class="p1rebounds"> </p>
+                    <p class="p1steals"> </p>
+                    <p class="p1assists"> </p>
+                    <p class="p1blocks"> </p>
+                    <p class="p1fouls"> </p>
+                    <p class="p1FTmade"> </p>
                 </div>
             </div>  
         </div>
@@ -83,10 +95,10 @@
                     <p class="p2points"> Season Points </p>
                     <p class="p2rebounds"> Filler </p>
                     <p class="p2steals"> Filler </p>
-                    <p class="filler"> Filler </p>
-                    <p class="filler"> Filler </p>
-                    <p class="filler"> Filler </p>
-                    <p class="filler"> Filler </p>
+                    <p class="p2assists"> Filler </p>
+                    <p class="p2blocks"> Filler </p>
+                    <p class="p2fouls"> Filler </p>
+                    <p class="p2FTmade"> Filler </p>
                 </div>
             </div>
         </div>
@@ -98,10 +110,10 @@
                     <p class="p3points"> Season Points </p>
                     <p class="p3rebounds"> Filler </p>
                     <p class="p3steals"> Filler </p>
-                    <p class="filler"> Filler </p>
-                    <p class="filler"> Filler </p>
-                    <p class="filler"> Filler </p>
-                    <p class="filler"> Filler </p>
+                    <p class="p3assists"> Filler </p>
+                    <p class="p3blocks"> Filler </p>
+                    <p class="p3fouls"> Filler </p>
+                    <p class="p3FTmade"> Filler </p>
                 </div>
             </div>
         </div>
