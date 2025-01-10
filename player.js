@@ -31,6 +31,8 @@ async function fetchPlayerImage(playerName, teamName) {
         const players = data1.athletes;
         console.log(players);
 
+        const fullTeamName = data1.team.displayName;
+
         let requiredPlayer = null;
 
         for (let i = 0; i < players.length; i ++) {
@@ -46,7 +48,7 @@ async function fetchPlayerImage(playerName, teamName) {
         //updating player personal info here 
 
         document.querySelector(".playerName").textContent = requiredPlayer.displayName;
-        document.querySelector(".playerTeam").textContent = teamName;
+        document.querySelector(".playerTeam").textContent = fullTeamName + document.querySelector(".playerTeam").textContent;
         document.querySelector(".playerNumber").textContent = "#" + requiredPlayer.jersey;
 
         const infoNodeList = document.querySelectorAll(".info");

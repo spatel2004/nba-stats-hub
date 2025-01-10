@@ -8,15 +8,15 @@ body {
     align-items:center;
     margin:2% auto;
     width:90vw;
-    height: 50vh;
-    background-color:rgb(37, 43, 62);
+    height: 35vh;
+    background-color:rgb(29,34,50);
     gap:80px;
     border-radius:20px;
 }
 
 .playerPicture {
-    height:300px;
-    width:300px;
+    height:225px;
+    width:250px;
     object-fit:contain;
     border-radius:50%;
     padding-bottom:25px;
@@ -27,6 +27,7 @@ body {
     color:white;
     font-size:55px;
     margin:0;
+    font-weight:bolder;
 }
 
 .teamAndNumberContainer {
@@ -52,3 +53,73 @@ body {
     background-color:rgb(29,39,56);
 }
 
+.playerStatsContainer {
+    margin-top:3%;
+}
+
+.seasonStatsTitle {
+    padding-left:5%;
+    font-size:26px;
+    font-weight:bolder;
+    color:white;
+}
+
+.seasonStatsContainer {
+    display:flex;
+    justify-content:center;
+    gap:50px;
+    color:white;
+}
+
+.numeric {
+    background-color:rgb(29,34,50);
+    border:1px solid rgb(29,40,57);
+    width:300px;
+    text-align:center;
+    border-radius:15px;
+}
+
+.careerHighlightsSection {
+    margin-top:3%;
+    padding-left:5%;
+}
+
+.careerTitle {
+    font-size:26px;
+    color:white;
+    font-weight:bolder;
+}
+
+.collegeAndCareerStats {
+    display:flex;
+    gap:20px;
+}
+
+.highlightsContainer {
+    padding-top:10px;
+    padding-bottom:120px;
+    padding-left:20px;
+
+    height:5vh;
+    width:76vh;
+    background-color:rgb(29,34,50);
+    border:1px solid rgb(29,40,57);
+}
+
+.education, .totalStatsImg {
+    height:30px;
+    width:30px;
+}
+
+.collegeTitleContainer, .totalStatsTitleContainer {
+    display:flex;
+    align-items:center;
+    gap:20px;
+    width:400px;
+    color:white;
+    font-size:20px;
+}
+
+.collegeTitle, .totalStatsTitle {
+    font-size:26px;
+}
