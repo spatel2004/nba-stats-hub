@@ -47,16 +47,25 @@ async function fetchPlayerImage(playerName, teamName) {
 
         //updating player personal info here 
 
+        console.log(requiredPlayer);
+
         document.querySelector(".playerName").textContent = requiredPlayer.displayName;
         document.querySelector(".playerTeam").textContent = fullTeamName + document.querySelector(".playerTeam").textContent;
         document.querySelector(".playerNumber").textContent = "#" + requiredPlayer.jersey;
 
-        const infoNodeList = document.querySelectorAll(".info");
-        for (let i = 0; i < infoNodeList.length; i ++) {
-            infoNodeList[i].style.backgroundColor = hexToRgb(`${teamColor}`);
+        document.querySelector(".playerContainer").style.backgroundColor = hexToRgb(`${teamColor}`);
+        // const infoNodeList = document.querySelectorAll(".info");
+        // for (let i = 0; i < infoNodeList.length; i ++) {
+        //     infoNodeList[i].style.backgroundColor = hexToRgb(`${teamColor}`);
+        // }
+
+        if (requiredPlayer.position.parent) {
+            document.querySelector(".playerPosition").textContent = requiredPlayer.position.parent.displayName;
+        }
+        else {
+            document.querySelector(".playerPosition").textContent = requiredPlayer.position.displayName;
         }
 
-        document.querySelector(".playerPosition").textContent = requiredPlayer.position.parent.displayName;
         document.querySelector(".playerHeight").textContent = requiredPlayer.displayHeight;
         document.querySelector(".playerWeight").textContent = requiredPlayer.displayWeight;
 

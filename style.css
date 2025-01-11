@@ -29,7 +29,7 @@ nav {
 .mainTitleAndSearchContainer {
     text-align:center;
     width:100%;
-    height:60vh;
+    height:58vh;
     border:1px solid white;
     background: linear-gradient(to right, 
   rgb(112, 55, 214) 0%, 
@@ -144,6 +144,52 @@ nav {
     background-color:rgb(96, 87, 167);
 }
 
+.featuredStatisticsTitle {
+    text-align:center;
+    margin-top:5%;
+    color:rgb(124,59,237);
+    font-size:34px;
+    font-weight:bolder;
+}
+
+.statisticsContainer {
+    width:100vw;
+    display:flex;
+    justify-content:center;
+    gap:45px;
+}
+
+.stat {
+    width:350px;
+    height:110px;
+    padding:4px 10px 50px 4px;
+    background-color:rgb(27,35,51);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius:15px;
+    padding-left:2%;
+    color:white;
+    margin:0;
+    display:block;
+    gap:5px;
+    line-height:0.50;
+}
+
+.stat:hover {
+    transform:scale(1.15);
+}
+
+.filler1 {
+    font-size:18px;
+    margin-top:8%;
+}
+
+.filler2 {
+    font-weight:bolder;
+    font-size:32px;
+    color:rgb(124,59,237);
+}
+
+
 
 .searchBarContainer {
     display: flex;
@@ -236,48 +282,99 @@ nav {
     padding: 10px 20px;
 }
 
-@media (max-width: 768px) {
-
-    .playerContainer {
-        width:420px;
-        height:1000px;
-        border:4px solid black;
+@media (min-width: 481px) and (max-width: 768px) {
+    .mainTitleAndSearchContainer {
+        height:80vh;
+    }
+    .statsHubTitle{
+        font-size:70px;
     }
 
-    .playerContainer h2 {
-        padding-top:5%;
-    }
-    .statsContainer img {
-        border:2px solid black;
-        object-fit:cover;
-        height:300px;
-        width:275px;
+    .description-1, .description-2 {
+        font-size:30px;
     }
 
-    .searchBarContainer {
-        margin-top:25%;
-        flex-direction:column;
+    #headerSearchBar {
+        width:500px;
     }
 
-    #searchBar {
-        width:200px;
-        font-size:12px;
+    .headerSearch {
+        margin-top:10%;
     }
 
-    .currentLeadersTitle {
-        font-size: 27px;
-        flex-wrap:wrap;
+    .statisticsContainer {
         text-align:center;
     }
 
-    .currentSeasonLeadersContainer {
-        margin-top: 15%;
+    .filler1 {
+        font-size:14px;
     }
 
-    #searchBtn {
-        width:100px;
-        height:45px;
+    .filler2 {
+        font-size:28px;
     }
 
+    .filler3 {
+        font-size:14px;
+    }
+
+    .searchBarContainer {
+        margin-top:10%;
+    }
+}
+
+@media (max-width: 480px) {
+    .statsHubTitle {
+        font-size:30px;
+        margin-top:0;
+        padding-top:10%;
+    }
+
+    .description-1, .description-2 {
+        font-size:15px;
+    }
+
+    .exploreBtnsContainer {
+        display:flex;
+        justify-content:space-around;
+        gap:0;
+    }
+
+    .explorePopPlayersBtn, .liveScoreBtn {
+        width:120px;
+        padding:10px 0px 10px 0px;
+    }
+
+    .mainTitleAndSearchContainer {
+        border:transparent;
+        margin-top:0;
+    }
+
+    .featuredStatisticsTitle {
+        font-size:25px;
+    }
+
+    .statisticsContainer {
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .stat {
+        width:250px;
+        text-align:center;
+    }
+
+    .filler1 {
+        font-size:18px;
+    }
+
+    .filler2 {
+        font-size:28px;
+    }
+
+    .filler3 {
+        font-size:15px;
+    }
 }
   
