@@ -6,8 +6,20 @@ async function getPlayer() {
         const response = await fetch(`http://b8c40s8.143.198.70.30.sslip.io/api/PlayerDataTotals/query?playerName=${userInput}&season=2025&ascending=true&pageNumber=1&pageSize=1`);
         console.log(response);
 
+        if (!response.ok) {
+            throw new Error("Could not find player in the current season");
+        }
+
         const data = await response.json();
         console.log(data);
+
+        if (data[0].team === "BRK") {
+            data[0].team = "BKN";
+        }
+
+        if (data[0].team === "CHO") {
+            data[0].team = "CHA";
+        }
 
         fetchPlayerImage(data[0].playerName, data[0].team);
         fetchPlayerGameStats(data);
@@ -54,10 +66,6 @@ async function fetchPlayerImage(playerName, teamName) {
         document.querySelector(".playerNumber").textContent = "#" + requiredPlayer.jersey;
 
         document.querySelector(".playerContainer").style.backgroundColor = hexToRgb(`${teamColor}`);
-        // const infoNodeList = document.querySelectorAll(".info");
-        // for (let i = 0; i < infoNodeList.length; i ++) {
-        //     infoNodeList[i].style.backgroundColor = hexToRgb(`${teamColor}`);
-        // }
 
         if (requiredPlayer.position.parent) {
             document.querySelector(".playerPosition").textContent = requiredPlayer.position.parent.displayName;
@@ -86,10 +94,11 @@ function fetchPlayerGameStats(data) {
     const reboundsPerGame = ((data[0].totalRb) / (data[0].games)).toFixed(1);
     const assistsPerGame = ((data[0].assists) / (data[0].games)).toFixed(1);
     const stealsPerGame = ((data[0].steals) / (data[0].games)).toFixed(1);
-    const blocksPerGame = ((data[0].blocks) / (data[0].games)).toFixed(1);
 
-    const statsArray = [pointsPerGame, reboundsPerGame, assistsPerGame, stealsPerGame, blocksPerGame];
-    const listStats = document.querySelectorAll(".stat1");
+    document.querySelector(".ppg").textContent = pointsPerGame;
+    document.querySelector(".rbg").textContent = reboundsPerGame;
+    document.querySelector(".apg").textContent = assistsPerGame;
+    document.querySelector(".spg").textContent = stealsPerGame;
 
     let i = 0;
 
@@ -112,12 +121,4 @@ function hexToRgb(hex) {
     return `rgb(${r}, ${g}, ${b})`;
 }
 
-async function fetchNews() {
-    const response = await fetch("https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard");
-    console.log(response);
-
-    const data = await response.json();
-    console.log(data);
-}
 getPlayer();
-fetchNews();

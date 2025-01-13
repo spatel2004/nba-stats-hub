@@ -4,6 +4,57 @@ function saveInput() {
   window.location.href="playercard.html";
 }
 
+async function loadNews() {
+  try {
+    const newsResponse = await fetch("https://site.api.espn.com/apis/site/v2/sports/basketball/nba/news");
+    console.log(newsResponse);
+
+    if (!newsResponse.ok) {
+      throw new Error("Could not fetch resource at this time!");
+    }
+
+    const newsData = await newsResponse.json();
+    console.log(newsData);
+
+    const articles = newsData.articles;
+
+    console.log(articles);
+
+    for (let i = 0; i < 3; i ++) {
+      const news = articles[i];
+      if (news.images.length === 0) {
+        continue;
+      }
+      if (i === 0) {
+        document.querySelector(".newsImg1").src = news.images[0].url;
+        document.querySelector(".newsImg1").height = 450;
+        document.querySelector(".newsImg1").width = 550;
+        document.querySelector(".newsDescription1").textContent = news.description;
+        document.querySelector(".newsHeadline1").textContent = news.headline;
+
+      }
+      else if (i === 1) {
+        document.querySelector(".newsImg2").src = news.images[0].url;
+        document.querySelector(".newsImg2").height = 450;
+        document.querySelector(".newsImg2").width = 550;
+        document.querySelector(".newsDescription2").textContent = news.description;
+        document.querySelector(".newsHeadline2").textContent = news.headline;
+      }
+      else {
+        document.querySelector(".newsImg3").src = news.images[0].url;
+        document.querySelector(".newsImg3").height = 450;
+        document.querySelector(".newsImg3").width = 550;
+        document.querySelector(".newsDescription3").textContent = news.description;
+        document.querySelector(".newsHeadline3").textContent = news.headline;
+      }
+    }
+  }
+
+  catch(error) {
+    console.error(error);
+  }
+}
+
 async function loadTeamPlayers() {
   try {
     const userTeam = document.querySelector(".teamSelection").value;
@@ -261,7 +312,6 @@ function updateStarPlayer3Stats(data) {
   document.querySelector(".p3blocks").textContent = "BPG: " + (data[0].blocks / data[0].games).toFixed(1);
   document.querySelector(".p3fouls").textContent = "Fouls Commited: " + (data[0].personalFouls);
   document.querySelector(".p3FTmade").textContent = "Free Throws Made: " + (data[0].ft);
-
 }
 
 function movePlayersDown() {
@@ -294,5 +344,4 @@ document.querySelector(".teamSelection").addEventListener("mouseout",function() 
   document.querySelector(".mostPopularPlayersContainer").style.marginTop = "3%";
 });
 
-
-
+loadNews();

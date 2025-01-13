@@ -1,6 +1,7 @@
 body {
     margin: 0;
-    background-color:rgb(17,26,35);
+    /* background: linear-gradient(to bottom, #5b21b6, #0f172a, #0f0f15); */
+    background: linear-gradient(to bottom, rgb(107,33,180), #0f172a, #0f0f15);
     font-family: 'Outfit', sans-serif;
     color: black; /* Light text color */
 }
@@ -10,7 +11,7 @@ nav {
     align-items:center;
     justify-content:space-between;
     border-bottom: 1px solid white; 
-    padding:0 1%;
+    padding:0 3%;
     background-color:rgb(223,218,235);
 }
 
@@ -23,23 +24,17 @@ nav {
 
 .NBAStatsTitle {
     color: rgb(29,40,58);
-    font-size: 30px;
+    font-size: 20px;
+    font-weight:bolder;
 }
 
 .mainTitleAndSearchContainer {
     text-align:center;
     width:100%;
-    height:58vh;
-    border:1px solid white;
-    background: linear-gradient(to right, 
-  rgb(112, 55, 214) 0%, 
-  rgb(85, 50, 160) 33%, 
-  rgb(58, 45, 113) 66%, 
-  rgb(30, 40, 61) 100%);
 }
 
 .statsHubTitle {
-    font-size:70px;
+    font-size:60px;
     color:white;
     font-weight:bolder;
     text-align:center;
@@ -108,13 +103,13 @@ nav {
     justify-content:center;
     align-items:center;
     gap:20px;
+    margin-top:3%;
 }
 
 .liveScoreBtn, .explorePopPlayersBtn {
     width:250px;
     font-weight:bolder;
     font-size:14px;
-    margin-top:50px;
     border-radius:15px;
     border:none;
 }
@@ -144,10 +139,49 @@ nav {
     background-color:rgb(96, 87, 167);
 }
 
+.latestNewsSection {
+    text-align:center;
+    margin-top:6%;
+}
+
+.latestNewsTitle {
+    font-size:34px;
+    color:rgb(190,132,252);
+    font-weight:bolder;
+}
+
+.newsContainer {
+    display:flex;
+    justify-content:center;
+    gap:20px;
+}
+
+.news {
+    width:550px;
+    background-color:rgb(9,15,33);
+    color:white;
+    object-fit:cover;
+    border-radius:20px;
+}
+
+.newsImg {
+    border-radius:15px;
+}
+
+.newsHeadline {
+    font-size:20px;
+    width:400px;
+    text-align:start;
+    padding-left:4%;
+}
+
+.featuredStatisticsSection {
+    margin-top:6%;
+}
+
 .featuredStatisticsTitle {
     text-align:center;
-    margin-top:5%;
-    color:rgb(124,59,237);
+    color:rgb(190,132,252);
     font-size:34px;
     font-weight:bolder;
 }
@@ -186,10 +220,8 @@ nav {
 .filler2 {
     font-weight:bolder;
     font-size:32px;
-    color:rgb(124,59,237);
+    color:rgb(190,132,252);
 }
-
-
 
 .searchBarContainer {
     display: flex;
@@ -205,11 +237,11 @@ nav {
     border-radius: 25px;
     padding-left: 20px;
     outline: none;
-    border: 2px solid blue; /* Subtle border for contrast */
+    border: 1px solid rgb(29,40,58); /* Subtle border for contrast */
     box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
     font-size: 18px;
-    background-color: whitesmoke; /* Dark search bar */
-    color: black;
+    background-color: rgb(26,31,44); /* Dark search bar */
+    color: white;
     transition: all 0.3s ease;
 }
 
@@ -234,9 +266,10 @@ nav {
     margin-top: 3%;
 }
 
+
 .mostPopularPlayersTitle {
     font-size: 35px;
-    color: white;
+    color: rgb(190,132,252);
 }
 
 .starPlayersContainer {
@@ -287,19 +320,23 @@ nav {
         height:80vh;
     }
     .statsHubTitle{
-        font-size:70px;
+        font-size:50px;
     }
 
     .description-1, .description-2 {
-        font-size:30px;
+        font-size:25px;
     }
 
     #headerSearchBar {
-        width:500px;
+        width:550px;
     }
 
     .headerSearch {
         margin-top:10%;
+    }
+
+    .exploreBtnsContainer {
+        margin-top:5%;
     }
 
     .statisticsContainer {
@@ -320,6 +357,16 @@ nav {
 
     .searchBarContainer {
         margin-top:10%;
+    }
+
+    .statisticsContainer {
+        display:flex;
+        justify-content:center;
+        gap:20px;
+    }
+
+    .stat {
+        width:200px;
     }
 }
 
@@ -376,5 +423,25 @@ nav {
     .filler3 {
         font-size:15px;
     }
+
+    .statsContainer img {
+        height: 320px;
+        width:300px;
+    }
+
+    .mostPopularPlayersContainer {
+        margin-top:3%;
+    }
+
+    .mostPopularPlayersTitle {
+        font-size:28px;
+    }
+
+    .searchBarContainer {
+        margin-bottom:0;
+        padding-top:25%;
+    }
+
+
 }
   

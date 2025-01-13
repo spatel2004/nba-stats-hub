@@ -16,10 +16,9 @@ body {
 }
 
 .playerPicture {
-    height:300px;
+    height:250px;
     width:300px;
     object-fit:contain;
-    border-radius:50%;
     padding-bottom:25px;
     margin-left:15%;
 }
@@ -68,16 +67,40 @@ body {
 .seasonStatsContainer {
     padding-left:5%;
     display:flex;
-    gap:50px;
+    gap:30px;
     color:white;
 }
 
-.numeric {
+.statContainer {
     background-color:rgb(29,34,50);
     border:1px solid rgb(29,40,57);
     width:300px;
-    text-align:center;
+    padding-left:2%;
     border-radius:15px;
+    padding-bottom:2%;
+    transition: transform 0.3s ease;
+}
+
+.statContainer:hover {
+    transform:scale(1.05);
+}
+
+.statContainer p {
+    margin:0;
+}
+
+.title {
+    padding-top:8%;
+}
+
+.number {
+    padding-top:2%;
+    font-size:37px;
+    font-weight:bolder;
+}
+
+.currentSeason {
+    padding-top:2%;
 }
 
 .careerHighlightsSection {
@@ -100,7 +123,6 @@ body {
     padding-top:10px;
     padding-bottom:120px;
     padding-left:20px;
-
     height:5vh;
     width:76vh;
     background-color:rgb(29,34,50);
