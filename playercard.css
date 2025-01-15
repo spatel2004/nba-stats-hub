@@ -1,6 +1,10 @@
+html {
+    background: linear-gradient(to bottom, rgb(107,33,180), #0f172a, #0f0f15);
+}
 body {
     margin:0;
-    background-color:rgb(26,31,44);
+    min-height:100vh;
+    /* background-color:rgb(26,31,44); */
     font-family: 'Outfit', sans-serif;
 }
 
@@ -120,7 +124,7 @@ body {
 }
 
 .highlightsContainer {
-    padding-top:10px;
+    padding-top:5px;
     padding-bottom:120px;
     padding-left:20px;
     height:5vh;
@@ -129,9 +133,14 @@ body {
     border:1px solid rgb(29,40,57);
 }
 
-.education, .totalStatsImg {
-    height:30px;
-    width:30px;
+.education {
+    height:90px;
+    width:70px;
+}
+
+.totalStatsImg {
+    height:40px;
+    width:40px;
 }
 
 .collegeTitleContainer, .totalStatsTitleContainer {
@@ -145,4 +154,15 @@ body {
 
 .collegeTitle, .totalStatsTitle {
     font-size:26px;
+}
+
+@media (max-width: 480px) {
+    html {
+        height:100%;
+    }
+    body {
+        min-height:100vh;
+    }
+
+
 }

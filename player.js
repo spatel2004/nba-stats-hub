@@ -3,7 +3,7 @@ async function getPlayer() {
         const userInput = localStorage.getItem('userInput');
         console.log(userInput);
         
-        const response = await fetch(`http://b8c40s8.143.198.70.30.sslip.io/api/PlayerDataTotals/query?playerName=${userInput}&season=2025&ascending=true&pageNumber=1&pageSize=1`);
+        const response = await fetch(`http://rest.nbaapi.com/api/PlayerDataTotals/query?playerName=${userInput}&season=2025`);
         console.log(response);
 
         if (!response.ok) {
@@ -99,13 +99,6 @@ function fetchPlayerGameStats(data) {
     document.querySelector(".rbg").textContent = reboundsPerGame;
     document.querySelector(".apg").textContent = assistsPerGame;
     document.querySelector(".spg").textContent = stealsPerGame;
-
-    let i = 0;
-
-    for (const stat of listStats) {
-        stat.textContent = statsArray[i];
-        i += 1;
-    }
     
 }
 
