@@ -8,28 +8,65 @@ body {
     font-family: 'Outfit', sans-serif;
 }
 
+nav {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom: 1px solid rgb(107, 33, 180);
+    padding:0 3%;
+    background-color: rgb(29, 34, 50);
+}
+
+.goBack {
+    text-decoration:none;
+}
+
+.leftHeader {
+    margin:0;
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.NBAStatsTitle {
+    color: white;
+    font-size: 20px;
+    font-weight:bold;
+}
+
+.rightSide {
+    width:1200px;
+    display:flex;
+    justify-content:space-between;
+    margin-top:40px;
+}
+
 .playerContainer {
     display:flex;
     align-items:center;
-    margin:2% auto;
-    width:90vw;
-    height: 35vh;
+    margin:3% auto;
+    width:1400px;
+    height: 240px;
     background-color:rgb(29,34,50);
     gap:80px;
     border-radius:20px;
 }
 
 .playerPicture {
-    height:250px;
+    height:200px;
     width:300px;
     object-fit:contain;
     padding-bottom:25px;
-    margin-left:15%;
+    margin-left:10%;
+}
+
+.playerInfo {
+    margin-top:25px;
 }
 
 .playerName {
     color:white;
-    font-size:55px;
+    font-size:45px;
     margin:0;
     font-weight:bolder;
 }
@@ -38,7 +75,7 @@ body {
     color:white;
     display:flex;
     gap:10px;
-    font-size:24px;
+    font-size:20px;
     text-align:left;
     margin-left:1%;
 }
@@ -57,19 +94,33 @@ body {
     background-color:rgb(29,39,56);
 }
 
+.playerPic {
+    width:200px;
+    height:200px;
+    margin-right:120px;
+    margin-bottom:40px;
+}
+
 .playerStatsContainer {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin:0 auto;
     margin-top:3%;
+    max-width:1500px;
 }
 
 .seasonStatsTitle {
-    padding-left:5%;
+    align-self:flex-start;
+    padding-left:50px;
     font-size:26px;
     font-weight:bolder;
     color:white;
 }
 
 .seasonStatsContainer {
-    padding-left:5%;
+    align-self:flex-start;
+    padding-left:60px;
     display:flex;
     gap:30px;
     color:white;
@@ -79,10 +130,10 @@ body {
     background-color:rgb(29,34,50);
     border:1px solid rgb(29,40,57);
     width:300px;
-    padding-left:2%;
     border-radius:15px;
     padding-bottom:2%;
     transition: transform 0.3s ease;
+    text-align:center;
 }
 
 .statContainer:hover {
@@ -94,17 +145,19 @@ body {
 }
 
 .title {
+    font-size:20px;
     padding-top:8%;
 }
 
 .number {
-    padding-top:2%;
-    font-size:37px;
+    padding-top:3%;
+    font-size:38px;
     font-weight:bolder;
 }
 
 .currentSeason {
-    padding-top:2%;
+    font-size:17px;
+    padding-top:5%;
 }
 
 .careerHighlightsSection {
@@ -124,9 +177,7 @@ body {
 }
 
 .highlightsContainer {
-    padding-top:5px;
-    padding-bottom:120px;
-    padding-left:20px;
+    padding:5px 20px 50px 20px;
     height:5vh;
     width:76vh;
     background-color:rgb(29,34,50);

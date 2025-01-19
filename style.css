@@ -1,7 +1,10 @@
+html {
+    background: linear-gradient(to bottom, rgb(107,33,180), #0f172a, #0f0f15);
+}
+
 body {
     margin: 0;
     /* background: linear-gradient(to bottom, #5b21b6, #0f172a, #0f0f15); */
-    background: linear-gradient(to bottom, rgb(107,33,180), #0f172a, #0f0f15);
     font-family: 'Outfit', sans-serif;
     color: black; /* Light text color */
     padding-bottom:50px;
@@ -11,9 +14,9 @@ nav {
     display:flex;
     align-items:center;
     justify-content:space-between;
-    border-bottom: 1px solid white; 
+    border-bottom: 1px solid rgb(107, 33, 180);
     padding:0 3%;
-    background-color:rgb(223,218,235);
+    background-color: rgb(29, 34, 50);
 }
 
 .leftHeader {
@@ -24,7 +27,7 @@ nav {
 }
 
 .NBAStatsTitle {
-    color: rgb(29,40,58);
+    color: white;
     font-size: 20px;
     font-weight:bolder;
 }
@@ -35,7 +38,7 @@ nav {
 }
 
 .statsHubTitle {
-    font-size:75px;
+    font-size:60px;
     color:white;
     font-weight:bolder;
     text-align:center;
@@ -46,7 +49,7 @@ nav {
 .description-1, .description-2 {
     margin:0;
     text-align:center;
-    font-size:28px;
+    font-size:21px;
     color:white;
 }
 
@@ -60,7 +63,7 @@ nav {
 
 #headerSearchBar {
     width: 750px;
-    height: 70px;
+    height: 50px;
     border-radius: 10px;
     padding-left: 20px;
     outline: none;
@@ -92,7 +95,7 @@ nav {
 
 #headerSearchBtn {
     width:120px;
-    height:60px;
+    height:50px;
     border-radius:10px;
     background-color:#2561f8;
     color:whitesmoke;
@@ -122,23 +125,20 @@ nav {
 
 .explorePopPlayersBtn {
     padding:17px;
-    background-color:white;
+    background-color:rgb(27,35,51);
     color:rgb(150,101,241);
+    border:1px solid #2561f8;
 }
 
 .liveScoreBtn {
     padding:15px;
-    background-color:transparent;
-    color:white;
-    border:2px solid white;
+    background-color:rgb(27,35,51);
+    color:rgb(150,101,241);
+    border:1px solid #2561f8;
 }
 
-.explorePopPlayersBtn:hover {
+.explorePopPlayersBtn:hover, .liveScoreBtn:hover {
     background-color:rgb(238, 235, 235);
-}
-
-.liveScoreBtn:hover {
-    background-color:rgb(96, 87, 167);
 }
 
 .latestNewsSection {
@@ -154,6 +154,7 @@ nav {
 
 .newsContainer {
     display:flex;
+    flex-wrap:wrap;
     justify-content:center;
     gap:40px;
 }
@@ -162,13 +163,14 @@ nav {
     display:flex;
     flex-direction:column;
     align-items:start;
-    width:400px;
+    width:390px;
     background-color:rgb(9,15,33);
     color:white;
     object-fit:cover;
     border-radius:20px;
     border:1px solid rgb(107,33,180);
     padding-bottom:30px;
+    padding:10px 20px 20px 20px;
 }
 
 .news a {
@@ -177,20 +179,20 @@ nav {
 }
 
 .newsHeadline {
-    font-size:18px;
+    font-size:20px;
     max-width:500px;
     margin-left:4%;
     text-align:start;
     flex-wrap:wrap;
-    font-weight:bolder;
+    font-weight:600;
 }
 
 .newsDescription {
-    font-size:15px;
+    font-size:17px;
     max-width:475px;
     max-height:100px;
     text-align:start;
-    padding-bottom:15px;
+    padding-bottom:50px;
     margin-left:4%;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -204,9 +206,9 @@ nav {
     background-color:rgb(27,35,51);
     padding:10px;
     border-radius:15px;
-    color:rgb(190,132,252);
+    color:rgb(150,101,241);
     border:none;
-    box-shadow:2px 3px rgb(107,33,180);
+    box-shadow:1px 1px rgb(107,33,180);
     margin-top:5%;
     display:flex;
     font-size:14px;
@@ -242,38 +244,36 @@ nav {
 }
 
 .stat {
-    width:350px;
+    width:325px;
     height:110px;
     padding:4px 10px 50px 4px;
     background-color:rgb(27,35,51);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius:15px;
-    padding-left:2%;
-    padding-bottom:5%;
+    padding:0 15px 45px 15px;
     color:white;
     margin:0;
     display:block;
     gap:5px;
     line-height:0.50;
+    text-align:center;
+    border:1px solid #2561f8;
 }
 
 .stat:hover {
     transform:scale(1.15);
 }
 
-.filler1 {
-    font-size:16px;
+
+.filler1, .filler3 {
+    font-size:20px;
     margin-top:8%;
 }
 
 .filler2 {
     font-weight:bolder;
-    font-size:28px;
+    font-size:32px;
     color:rgb(190,132,252);
-}
-
-.filler3 {
-    font-size:16px;
 }
 
 .searchBarContainer {
@@ -339,7 +339,8 @@ nav {
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden; 
-    border:2px solid rgb(107,33,180);
+    padding-bottom:50px;
+    color:white;
 }
 
 .playerContainer:hover {
@@ -362,55 +363,25 @@ nav {
     object-fit:contain;
 }
 
-.stats-row1, .stats-row2 {
+.stats-row {
     display:flex;
-    justify-content:center;
-    gap:30px;
+    justify-content:space-around;
     text-align:center;
-}
-
-.stats-row1 {
-    margin-top:6%;
-}
-
-.stats-row2 {
-    margin-top:4%;
+    margin-top:10%;
 }
 
 .container {
-    color:white;
-    font-size:20px;
-    border:1.5px solid black;
-    width:150px;
-    border-radius:10px;
+    width:70px;
+    height:70px;
+    border-radius:20px;
     padding:15px;
 }
 
-.line {
-    margin-top:5%;
-    width:350px;
+.container p {
+    margin-top:6%;
 }
 
-.blocksPerGame, .foulsPerGame {
-    color:white;
-    margin-left:10%;
-}
 
-.blocksContainer, .foulsContainer {
-    color:white;
-    font-size:20px;
-    text-align:start;
-    display:flex;
-    justify-content:space-around;
-}
-
-.blocksPerGameTitle {
-    margin-right:10%;
-}
-
-.bpg, .fouls {
-    font-weight:bolder;
-}
 
 @media (min-width: 481px) and (max-width: 768px) {
     nav {

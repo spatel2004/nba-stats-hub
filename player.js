@@ -23,6 +23,7 @@ async function getPlayer() {
 
         fetchPlayerImage(data[0].playerName, data[0].team);
         fetchPlayerGameStats(data);
+        fetchCareerInformation(data);
     }
 
     catch (error) {
@@ -53,6 +54,10 @@ async function fetchPlayerImage(playerName, teamName) {
                 requiredPlayer = currentPlayer;
                 break;
             }
+            else if (currentPlayer.firstName === "Nikola") {
+                requiredPlayer = currentPlayer;
+                break;
+            }
         }
 
         const teamColor = data1.team.color;
@@ -79,15 +84,19 @@ async function fetchPlayerImage(playerName, teamName) {
 
         document.querySelector(".playerPicture").src = requiredPlayer.headshot.href;
         document.querySelector(".playerPicture").style.backgroundColor = hexToRgb(`${teamColor}`);
-        const stats = document.querySelectorAll(".stat");
+        const stats = document.querySelectorAll(".statContainer");
         for (let i = 0; i < stats.length; i ++) {
-            stats[i].style.borderColor = hexToRgb(`${teamColor}`);
+            stats[i].style.backgroundColor = hexToRgb(`${teamColor}`);
         }
+
+        document.querySelector(".playerPic").src = data1.team.logo;
     }
     catch(error) {
         console.error(error);
     }
 }
+
+
 
 function fetchPlayerGameStats(data) {
     const pointsPerGame = ((data[0].points) / (data[0].games)).toFixed(1);
@@ -100,6 +109,10 @@ function fetchPlayerGameStats(data) {
     document.querySelector(".apg").textContent = assistsPerGame;
     document.querySelector(".spg").textContent = stealsPerGame;
     
+}
+
+function fetchCareerInformation(data) {
+
 }
 
 function hexToRgb(hex) {

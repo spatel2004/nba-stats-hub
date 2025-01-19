@@ -17,35 +17,31 @@ async function loadNews() {
     const newsData = await newsResponse.json();
     const articles = newsData.articles;
 
+    console.log(articles);
+
     // setting the news in each of the news sections, updating descriptions and headlines for news
-    for (let i = 0; i < 3; i ++) {
+    for (let i = 0; i < 6; i ++) {
       const news = articles[i];
       if (news.images.length === 0) {
         continue;
       }
       if (i === 0) {
-        document.querySelector(".newsImg1").src = news.images[0].url;
-        document.querySelector(".newsImg1").height = 275;
-        document.querySelector(".newsImg1").width = 400;
-        document.querySelector(".newsDescription1").textContent = news.description;
-        document.querySelector(".newsHeadline1").textContent = news.headline;
-        document.querySelector(".seeMoreBtn1").href = news.links.web.href;
+        updateNews("newsImg1", "newsDescription1", "newsHeadline1", "seeMoreBtn1", news);
       }
       else if (i === 1) {
-        document.querySelector(".newsImg2").src = news.images[0].url;
-        document.querySelector(".newsImg2").height = 275;
-        document.querySelector(".newsImg2").width = 400;
-        document.querySelector(".newsDescription2").textContent = news.description;
-        document.querySelector(".newsHeadline2").textContent = news.headline;
-        document.querySelector(".seeMoreBtn2").href = news.links.web.href;
+        updateNews("newsImg2", "newsDescription2", "newsHeadline2", "seeMoreBtn2", news);
       }
-      else {
-        document.querySelector(".newsImg3").src = news.images[0].url;
-        document.querySelector(".newsImg3").height = 275;
-        document.querySelector(".newsImg3").width = 400;
-        document.querySelector(".newsDescription3").textContent = news.description;
-        document.querySelector(".newsHeadline3").textContent = news.headline;
-        document.querySelector(".seeMoreBtn3").href = news.links.web.href;
+      else if (i === 2) {
+        updateNews("newsImg3", "newsDescription3", "newsHeadline3", "seeMoreBtn3", news);
+      }
+      else if (i === 3) {
+        updateNews("newsImg4", "newsDescription4", "newsHeadline4", "seeMoreBtn4", news);
+      }
+      else if (i === 4) {
+        updateNews("newsImg5", "newsDescription5", "newsHeadline5", "seeMoreBtn5", news);
+      }
+      else{
+        updateNews("newsImg6", "newsDescription6", "newsHeadline6", "seeMoreBtn6", news);
       }
     }
   }
@@ -53,6 +49,15 @@ async function loadNews() {
   catch(error) {
     console.error(error);
   }
+}
+
+function updateNews(newsImg, newsDescription, newsHeadline, btnName, news) {
+  document.querySelector(`.${newsImg}`).src = news.images[0].url;
+  document.querySelector(`.${newsImg}`).height = 250;
+  document.querySelector(`.${newsImg}`).width = 390;
+  document.querySelector(`.${newsDescription}`).textContent = news.description;
+  document.querySelector(`.${newsHeadline}`).textContent = news.headline;
+  document.querySelector(`.${btnName}`).href = news.links.web.href;
 }
 
 async function fetchTeam(teamName) {
@@ -86,6 +91,9 @@ function setPlayerCard1(teamData, athleteData) {
   const bucksColor = teamData.team.color;
   document.querySelector(".player1").style.backgroundColor = hexToRgb(bucksColor);
   document.querySelector(".player1Image").src = `${athleteData.headshot.href}`;
+  document.querySelector(".pointsContainer1").style.backgroundColor = darkenHexColor(bucksColor, 0.75);
+  document.querySelector(".reboundsContainer1").style.backgroundColor = darkenHexColor(bucksColor, 0.75);
+  document.querySelector(".assistsContainer1").style.backgroundColor = darkenHexColor(bucksColor, 0.75);
 }
 
 function setPlayerCard2(teamData, athleteData) {
@@ -93,6 +101,9 @@ function setPlayerCard2(teamData, athleteData) {
   const lakersColor = teamData.team.color;
   document.querySelector(".player2").style.backgroundColor = hexToRgb(lakersColor);
   document.querySelector(".player2Image").src = `${athleteData.headshot.href}`;
+  document.querySelector(".pointsContainer2").style.backgroundColor = darkenHexColor(lakersColor, 0.75);
+  document.querySelector(".reboundsContainer2").style.backgroundColor = darkenHexColor(lakersColor, 0.75);
+  document.querySelector(".assistsContainer2").style.backgroundColor = darkenHexColor(lakersColor, 0.75);
 }
 
 
@@ -101,6 +112,9 @@ function setPlayerCard3(teamData, athleteData) {
   const warriorsColor = teamData.team.color;
   document.querySelector(".player3").style.backgroundColor = hexToRgb(warriorsColor);
   document.querySelector(".player3Image").src = `${athleteData.headshot.href}`;
+  document.querySelector(".pointsContainer3").style.backgroundColor = darkenHexColor(warriorsColor, 0.75);
+  document.querySelector(".reboundsContainer3").style.backgroundColor = darkenHexColor(warriorsColor, 0.75);
+  document.querySelector(".assistsContainer3").style.backgroundColor = darkenHexColor(warriorsColor, 0.75);
 }
 
 
@@ -199,7 +213,6 @@ async function loadTeamPlayers() {
 
     const playerContainerList = document.querySelectorAll(".playerContainer");
     const teamColor = data.team.color;
-    
     for (let i = 0; i < playerContainerList.length; i ++) {
       playerContainerList[i].style.backgroundColor = hexToRgb(`${teamColor}`);
     }
@@ -214,6 +227,11 @@ async function loadTeamPlayers() {
 
     if (thirdHighestPlayer.fullName === "Nikola Vucevic") {
       thirdHighestPlayer.fullName = "Nikola Vučević";
+    }
+
+    const containers = document.querySelectorAll(".container");
+    for (let i = 0; i < containers.length; i ++) {
+      containers[i].style.backgroundColor = darkenHexColor(teamColor, 0.75);
     }
 
     const highestPlayerData = await fetchPlayerStats(`${highestPlayer.fullName}`);
@@ -247,32 +265,23 @@ async function fetchPlayerStats(playerName) {
 
 function updateCard1Information(data) {
   document.querySelector(".teamPlayer1").textContent = data[0].playerName;
-  document.querySelector(".p1points").textContent = "PPG: " + (data[0].points / data[0].games).toFixed(1);
-  document.querySelector(".p1rebounds").textContent = "RBG: " + (data[0].totalRb / data[0].games).toFixed(1);
-  document.querySelector(".p1steals").textContent = "SPG: " + (data[0].steals / data[0].games).toFixed(1);
-  document.querySelector(".p1assists").textContent = "APG: " + (data[0].assists / data[0].games).toFixed(1);
-  document.querySelector(".player1-bpg").textContent = "BPG: " + (data[0].blocks / data[0].games).toFixed(1);
-  document.querySelector(".player1-fouls").textContent = "FPG: " + (data[0].personalFouls / data[0].games).toFixed(1);
+  document.querySelector(".p1points").textContent = (data[0].points / data[0].games).toFixed(1);
+  document.querySelector(".p1rebounds").textContent = (data[0].totalRb / data[0].games).toFixed(1);
+  document.querySelector(".p1assists").textContent = (data[0].assists / data[0].games).toFixed(1);
 }
 
 function updateCard2Information(data) {
   document.querySelector(".teamPlayer2").textContent = data[0].playerName;
-  document.querySelector(".p2points").textContent = "PPG: " + (data[0].points / data[0].games).toFixed(1);
-  document.querySelector(".p2rebounds").textContent = "RBG: " + (data[0].totalRb / data[0].games).toFixed(1);
-  document.querySelector(".p2steals").textContent = "SPG: " + (data[0].steals / data[0].games).toFixed(1);
-  document.querySelector(".p2assists").textContent = "APG: " + (data[0].assists / data[0].games).toFixed(1);
-  document.querySelector(".player2-bpg").textContent = "BPG: " + (data[0].blocks / data[0].games).toFixed(1);
-  document.querySelector(".player2-fouls").textContent = "FPG: " + (data[0].personalFouls / data[0].games).toFixed(1);
+  document.querySelector(".p2points").textContent = (data[0].points / data[0].games).toFixed(1);
+  document.querySelector(".p2rebounds").textContent = (data[0].totalRb / data[0].games).toFixed(1);
+  document.querySelector(".p2assists").textContent = (data[0].assists / data[0].games).toFixed(1);
 }
 
 function updateCard3Information(data) {
   document.querySelector(".teamPlayer3").textContent = data[0].playerName;
-  document.querySelector(".p3points").textContent = "PPG: " + (data[0].points / data[0].games).toFixed(1);
-  document.querySelector(".p3rebounds").textContent = "RBG: " + (data[0].totalRb / data[0].games).toFixed(1);
-  document.querySelector(".p3steals").textContent = "SPG: " + (data[0].steals / data[0].games).toFixed(1);
-  document.querySelector(".p3assists").textContent = "APG: " + (data[0].assists / data[0].games).toFixed(1);
-  document.querySelector(".player3-bpg").textContent = "BPG: " + (data[0].blocks / data[0].games).toFixed(1);
-  document.querySelector(".player3-fouls").textContent = "FPG: " + (data[0].personalFouls / data[0].games).toFixed(1);
+  document.querySelector(".p3points").textContent = (data[0].points / data[0].games).toFixed(1);
+  document.querySelector(".p3rebounds").textContent = (data[0].totalRb / data[0].games).toFixed(1);
+  document.querySelector(".p3assists").textContent = (data[0].assists / data[0].games).toFixed(1);
 }
 
 function hexToRgb(hex) {
@@ -285,6 +294,25 @@ function hexToRgb(hex) {
   let b = parseInt(hex.substring(4, 6), 16);
 
   return `rgb(${r}, ${g}, ${b})`;
+}
+
+function darkenHexColor(hex, factor) {
+  // Remove '#' if present
+  hex = hex.replace('#', '');
+  
+  // Convert to RGB
+  let r = parseInt(hex.substring(0, 2), 16);
+  let g = parseInt(hex.substring(2, 4), 16);
+  let b = parseInt(hex.substring(4, 6), 16);
+  
+  // Apply the darkening factor
+  r = Math.max(0, Math.min(255, Math.floor(r * factor)));
+  g = Math.max(0, Math.min(255, Math.floor(g * factor)));
+  b = Math.max(0, Math.min(255, Math.floor(b * factor)));
+  
+  // Convert back to hex
+  const toHex = (value) => value.toString(16).padStart(2, '0');
+  return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
 }
 
 function movePlayersDown() {
