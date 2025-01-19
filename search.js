@@ -2,7 +2,7 @@
 function saveInput() {
   const userInput = document.getElementById("headerSearchBar").value;
   localStorage.setItem('userInput', userInput);
-  window.location.href="playercard.html";
+  window.location.href = `playercard.html?userInput=${encodeURIComponent(userInput)}`;
 }
 
 // loads the current news from NBA news API

@@ -1,6 +1,7 @@
 async function getPlayer() {
     try {
-        const userInput = localStorage.getItem('userInput');
+        const urlParams = new URLSearchParams(window.location.search);
+        const userInput = urlParams.get('userInput');
         console.log(userInput);
         
         const response = await fetch(`http://rest.nbaapi.com/api/PlayerDataTotals/query?playerName=${userInput}&season=2025`);
