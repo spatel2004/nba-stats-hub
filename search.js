@@ -133,14 +133,15 @@ async function loadStarPlayers() {
   setPlayerCard2(lakers, lebron);
   setPlayerCard3(warriors, curry);
 
+  
   try {
-    const giannisresponse = await fetch(`https://rest.nbaapi.com/api/PlayerDataTotals/query?playerName=${giannis.fullName}&season=2025`);
+    const giannisresponse = await fetch(`/api/proxy/PlayerDataTotals/query?playerName=${giannis.fullName}&season=2025`);
     const giannisData = await giannisresponse.json();
 
-    const lebronresponse = await fetch(`https://rest.nbaapi.com/api/PlayerDataTotals/query?playerName=${lebron.fullName}&season=2025`);
+    const lebronresponse = await fetch(`/api/proxy/PlayerDataTotals/query?playerName=${lebron.fullName}&season=2025`);
     const lebronData = await lebronresponse.json();
 
-    const curryresponse = await fetch(`https://rest.nbaapi.com/api/PlayerDataTotals/query?playerName=${curry.fullName}&season=2025`);
+    const curryresponse = await fetch(`/api/proxy/PlayerDataTotals/query?playerName=${curry.fullName}&season=2025`);
     const curryData = await curryresponse.json();
 
     updateCard1Information(giannisData);
@@ -251,7 +252,7 @@ async function loadTeamPlayers() {
 
 async function fetchPlayerStats(playerName) {
   try {
-    const response = await fetch(`https://rest.nbaapi.com/api/PlayerDataTotals/query?playerName=${playerName}&season=2025`);
+    const response = await fetch(`/api/proxy/PlayerDataTotals/query?playerName=${playerName}&season=2025`);
     if (!response.ok) {
       throw new Error("Could not find player. Please enter the correct spelling of the player.");
     }
