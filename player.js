@@ -4,7 +4,7 @@ async function getPlayer() {
         const userInput = urlParams.get('userInput');
         console.log(userInput);
         
-        const response = await fetch(`http://rest.nbaapi.com/api/PlayerDataTotals/query?playerName=${userInput}&season=2025`);
+        const response = await fetch(`https://rest.nbaapi.com/api/PlayerDataTotals/query?playerName=${userInput}&season=2025`);
         console.log(response);
 
         if (!response.ok) {
