@@ -4,7 +4,7 @@ async function getPlayer() {
         const userInput = urlParams.get('userInput');
         console.log(userInput);
         
-        const response = await fetch(`/api/handler?playerName=${encodeURIComponent(userInput)}&season=2025`);
+        const response = await fetch(`/api/handler?userInput=${encodeURIComponent(userInput)}&season=2025`);
         console.log(response);
 
         if (!response.ok) {
