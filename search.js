@@ -134,13 +134,13 @@ async function loadStarPlayers() {
   setPlayerCard3(warriors, curry);
 
   try {
-    const giannisresponse = await fetch(`/api/fetchPlayerData?playerName=${encodeURIComponent(giannis.fullName)}&season=2025`);
+    const giannisresponse = await fetch(`/api/handler?playerName=${encodeURIComponent(giannis.fullName)}&season=2025`);
     const giannisData = await giannisresponse.json();
 
-    const lebronresponse = await fetch(`/api/fetchPlayerData?playerName=${encodeURIComponent(lebron.fullName)}&season=2025`);
+    const lebronresponse = await fetch(`/api/handler?playerName=${encodeURIComponent(lebron.fullName)}&season=2025`);
     const lebronData = await lebronresponse.json();
 
-    const curryresponse = await fetch(`/api/fetchPlayerData?playerName=${encodeURIComponent(curry.fullName)}&season=2025`);
+    const curryresponse = await fetch(`/api/handler?playerName=${encodeURIComponent(curry.fullName)}&season=2025`);
     const curryData = await curryresponse.json();
 
     updateCard1Information(giannisData);
@@ -251,7 +251,7 @@ async function loadTeamPlayers() {
 
 async function fetchPlayerStats(playerName) {
   try {
-    const response = await fetch(`/api/fetchPlayerData?playerName=${encodeURIComponent(playerName)}&season=2025`);
+    const response = await fetch(`/api/handler?playerName=${encodeURIComponent(playerName)}&season=2025`);
     if (!response.ok) {
       throw new Error("Could not find player. Please enter the correct spelling of the player.");
     }
